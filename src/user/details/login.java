@@ -62,7 +62,7 @@ public class login extends HttpServlet {
 	 try
 	    {
 		 	boolean check=false;
-	        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","mylife@123");
+	        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","MilaRose!24");
 	        Statement st = con.createStatement();
 	        Statement st1 = con.createStatement();
 	        String q1 = "select username from userdata where username ='"+username+"'";

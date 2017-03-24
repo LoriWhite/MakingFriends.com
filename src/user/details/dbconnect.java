@@ -21,7 +21,7 @@ public class dbconnect {
 		}
 		try
 		{
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","mylife@123");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","MilaRose!24");
 			return con;
 		}
 		catch(SQLException e)

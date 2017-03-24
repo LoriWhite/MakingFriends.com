@@ -35,7 +35,7 @@ public class validate {
 		public boolean validateName(String name)
 		{
 			boolean check = false;
-			if(name.matches("[a-zA-Z]+"))
+			if(name.matches("[A-Z][a-z]+\\s[A-Z][a-z]+"))
 				check = true;
 			return check;
 		}
@@ -81,7 +81,7 @@ public class validate {
 	        {
 			 	dbconnect db = new dbconnect();
 				Connection con = db.connect();
-	           // Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","mylife@123");
+	           // Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","MilaRose!24");
 	            Statement st = con.createStatement();
 	            String q1 = "select username from userdata where username ='"+uname1+"'";
 	            ResultSet rs = st.executeQuery(q1);

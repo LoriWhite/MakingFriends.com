@@ -31,7 +31,7 @@ public class update
     }
  try
     {
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","mylife@123");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","MilaRose!24");
         String query = "update userdata set name = ?,email = ?,address = ?,ppassword = ?,cpassword = ? where username = ?";
         java.sql.PreparedStatement preparedStmt = con.prepareStatement(query);
         preparedStmt.setString(1,name);

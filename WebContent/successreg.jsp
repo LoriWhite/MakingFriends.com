@@ -17,7 +17,7 @@
 <h3>hey,you have registered successfully !</h3>
 <table>
 <tr>
-<td><a href="login.jsp"><input type ="submit" value ="LOGIN"/></a></td>
+<td><a href="index1.jsp"><input type ="submit" value ="LOGIN"/></a></td>
 </tr>
 </table>
 </body>

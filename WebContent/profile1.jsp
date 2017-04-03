@@ -6,16 +6,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width = device-width, initial-scale = 1">
 <title>PROFILE</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.page-header{
+	text-align: center;
+}
+</style>
 </head>
+<c:if test="${not empty loginError}">
+    <script>alert("Enter valid Details.Try Again!");
+</script>
+</c:if>
 <body>
-
-
 <form action="profile" method="post">
+<div class="page-header">
+<input type ="button" class ="btn btn-info" value ="EDIT" disabled="disabled" id ="EDIT"/>
+</div>
 <table>
-<tr>
-<td align="center"><input type ="button" value ="EDIT" disabled="disabled" id ="EDIT"/></td>
-</tr>
 <tr>
 <th>NAME</th>
 	<td><input type = "text" name = "name"  value='${pname}' id="name" /></td>
@@ -48,6 +62,11 @@
 <td align="right"><input type = "checkbox" name ="food" value ="Food"/>Food</td>
 </tr>
 <tr>
+<td align="left" ><input type = "checkbox" name ="tvmovies" value ="TV/Movies"/>TV/Movies</td>
+<td align="center"><input type = "checkbox" name ="youtubemedia" value ="Youtube/Media" />Youtube/Media</td>
+<td align="right"><input type = "checkbox" name ="arts" value ="Arts"/>Arts</td>
+</tr>
+<tr>
 <th>ADDRESS</th>
 	<td><input type = "text" name = "address"  value='${paddress}' id="address" ></td>
 </tr>
@@ -57,14 +76,14 @@
 </tr>
 <tr>
 <th>PASSWORD</th>
-	<td><input type = "password" name = "password" placeholder="******"  id="password"/></td>
+	<td><input type = "password" name = "password" placeholder="******"  value='${ppassword}' id="password"/></td>
 </tr>
 <tr>
 <th>CONFIRM PASSWORD</th>
-	<td><input type = "password" name = "confirmpassword" placeholder="******"  id="cpassword" /></td>
+	<td><input type = "password" name = "confirmpassword" placeholder="******" value='${ppassword}' id="cpassword" /></td>
 </tr>
 <tr>
-<td align="center"><input type ="submit" value ="SUBMIT"  id ="submit"/></td>
+<td align="center"><input type ="submit" class ="btn btn-info" value ="SUBMIT"  id ="submit"/></td>
 </tr>
 </table>
 </form>

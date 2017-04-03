@@ -202,12 +202,6 @@ public class reg extends HttpServlet {
 			out.println("please agree to conditions");
 		}*/
 		
-		
-		//System.out.println(Sports);
-		//System.out.println("Music is " + music);
-		/*hobbies = request.getParameterValues("hobby");
-		for(String s : hobbies)
-			System.out.println(s);*/
 		String wemail="",wname="",wdob="",winterest="",waddress="",wusername="",wpassword="";
 		int checkcount = 0;
 		validate p = new validate();
@@ -252,26 +246,27 @@ public class reg extends HttpServlet {
 			winterest="";
 			checkcount++;
 		}
-		if(address != null)
+		if(address.equals(""))
+		{
+			waddress = "Address Required";
+		}
+		else
 		{
 			waddress = "";
 			checkcount++;
 			System.out.println("Address Validated");
 		}
-		else
-		{
-			waddress = "Address Required";
-		}
 		boolean uservalid = p.validateusername(username);
-		if(uservalid == false)
-		{
-			wusername = "Username already Exists";
-		}
-		else
+		if((uservalid == false)&&(!username.equals("")))
 		{
 			System.out.println("Username Validated");
 			wusername="";
 			checkcount++;
+		}
+		else
+		{
+			wusername = "Username already Exists";
+			
 		}
 		boolean userpass = p.validatePassword(password);
 		if(userpass == true)
@@ -296,16 +291,17 @@ public class reg extends HttpServlet {
 		{
 			insert i = new insert();
 			i.insertdb(name, email, dateofbirth, address, username, password,cpassword, sports, animation, music, books, videogames, travel, fitness, boardgames, food, tvmovies, youtubemedia, arts);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/successreg.jsp");
-  	      dispatcher.forward(request, response);
+  	      	dispatcher.forward(request, response);
 		}
 		else
 		{
-			String error = wname + "\n" + wemail + "\n" + wdob + "\n" + winterest + "\n" + waddress + "\n" + wusername + "\n" + wpassword;
+			String error = wname + "\r\n" + wemail + "\r\n" + wdob + "\r\n" + winterest + "\r\n" + waddress + "\r\n" + wusername + "\r\n" + wpassword;
 			System.out.println(error);
-			request.setAttribute("Errormessage", error);
+			request.getSession().setAttribute("Errormessage", error);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/retry.jsp");
-  	        dispatcher.forward(request, response);
+  	        dispatcher.include(request, response);
 
 		}					
 

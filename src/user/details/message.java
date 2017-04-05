@@ -28,7 +28,7 @@ import com.mysql.fabric.xmlrpc.base.Array;
 @WebServlet("/message")
 public class message extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private String username;
+    private String uname;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -58,7 +58,7 @@ public class message extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		response.setContentType("text/html");
-		username = (String) session.getAttribute("uname");
+		uname = (String) session.getAttribute("uname");
 		String recipient = request.getParameter("recipient").toString();
 		String message = request.getParameter("message").toString();
 		
@@ -71,14 +71,14 @@ public class message extends HttpServlet {
 					dbconnect db = new dbconnect();
 					Connection con = db.connect();
 			        Statement st = con.createStatement();
-			        String q1 = "insert into messages (username, sender, message, date)\nselect '" + recipient + "', '" + username + "', '" + message + "', current_timestamp()";
-		            ResultSet rs = st.executeQuery(q1);
+			        String q1 = "insert into messages (username, sender, message, date) select '" + recipient + "', '" + uname + "', '" + message + "', current_timestamp()";
+			        st.executeUpdate(q1);
 			        
 		            st.close();
 			        con.close();
 			        
 		            out.println("message sent");
-            		session.setAttribute("uname", username);
+            		session.setAttribute("uname", uname);
             		RequestDispatcher dispatcher = request.getRequestDispatcher("/matchuser");
             	    dispatcher.forward(request, response);
 				}
@@ -107,7 +107,7 @@ public class message extends HttpServlet {
 	{
 		boolean check = false;
 		matchuser m = new matchuser();
-		HashMap<String, Integer> map = m.getUser(username);
+		HashMap<String, Integer> map = m.getUser(uname);
 		Set s = map.entrySet();
 		Iterator i = s.iterator();
 		while(i.hasNext())
